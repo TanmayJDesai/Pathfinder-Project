@@ -21,7 +21,8 @@ class Coord
 bool pathExists(string maze[], int nRows, int nCols, int sr, int sc, int er, int ec)
 {
     stack <Coord> Mapper;
-    Mapper.push(Coord(sr,sc));
+    Coord a(sr, sc);
+    Mapper.push(a);
     maze[sr][sc] = '^';
     while (!Mapper.empty())
     {
