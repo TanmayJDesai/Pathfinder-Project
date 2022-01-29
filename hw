@@ -1,0 +1,33 @@
+2. 
+
+The first 12 (r,c) coordinates popped off are: 
+(4,6)
+(3,6)
+(5,6)
+(5,7)
+(5,8)
+(6,8)
+(7,8)
+(8,8)
+(8,7)
+(6,6)
+(4,5)
+(4,4)
+
+4. 
+
+The first 12 (r,c) coordinates popped off are: 
+(4,6)
+(4,5)
+(5,6)
+(3,6)
+(4,4)
+(6,6)
+(5,7)
+(4,3)
+(5,4)
+(5,8)
+(4,2)
+(6,4)
+
+The main difference between the two algorithms is the order in which they are popped because stack is last in first out whereas the queue is first in first out. So the order by which the first algorithm is processed is West, South, East, North and then it is popped North, East, South, West. However, the queue algorithm is processed West, South, East, North, and then popped West, South, East, North so the order by which the map is traversed is slightly different. 
