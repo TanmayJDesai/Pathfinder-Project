@@ -26,7 +26,6 @@ bool pathExists(string maze[], int nRows, int nCols, int sr, int sc, int er, int
     while (!Mapper.empty())
     {
         Coord currentCoords = Mapper.front();
-        cout << currentCoords.r() << "--> " << currentCoords.c() << endl;
         Mapper.pop();
 
         int rw = currentCoords.r();
