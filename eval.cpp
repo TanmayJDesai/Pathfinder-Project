@@ -6,31 +6,63 @@
 #include <cassert>
 using namespace std;
 
-int convert_precedence(char ch)
+int addNum (int& varX, int& varY, int& result)
 {
-    if (ch == '-' || ch == '+')
+    result = varY + varX;
+    return result;
+}
+
+int subtractNum (int& varX, int& varY, int& result)
+{
+    result = varY - varX;
+    return result;
+}
+
+int multiplyNum (int& varX, int& varY, int& result)
+{
+    result = varY * varX;
+    return result;
+}
+int divideNum (int& varX, int& varY, int& result)
+{
+    result = varY / varX;
+    return result;
+}
+
+bool divideByZero(int& varX)
+{
+    if(varX == 0)
+    {
+        return true;
+    }
+    return false;
+}
+
+int declarePrecedence(char operatorTypePrecedence)
+{
+    if (operatorTypePrecedence == '-' || operatorTypePrecedence == '+')
     {
         return 1;
     }
-    else if (ch == '*' || ch == '/')
+    else if (operatorTypePrecedence == '*' || operatorTypePrecedence == '/')
     {
         return 2;
     }
     return 0; 
 }
 
-bool check_precedence(char firstOperator, char secondOperator)
+bool applyPrecedence(char cone, char ctwo)
 {
-    int fOper = convert_precedence(firstOperator);
-    int sOper = convert_precedence(secondOperator);
+    int fOper = declarePrecedence(cone);
+    int sOper = declarePrecedence(ctwo);
     bool hasHigherPrecedence = (fOper >= sOper);
     return (hasHigherPrecedence);
 }
 
-int convert_infix(string& infix, const Map& values, string& postfix, int numbers, int symbol, int p1, int p2)
+int infixToPostfixTranslation(string& infix, const Map& values, string& postfix, int numbers, int symbol, int p1, int p2)
 {
     stack<char> converter;
-
+    char openParen = '(';
     int i = 0;
 
     int pSymbol = 0;
@@ -39,7 +71,7 @@ int convert_infix(string& infix, const Map& values, string& postfix, int numbers
     int pcount = 0;
     for (; i < infix.size(); i++)
     {
-        if (infix[i] == '(')
+        if (infix[i] == openParen)
         {
             
           if(pSymbol == numbers || pSymbol == p2)
@@ -77,7 +109,7 @@ int convert_infix(string& infix, const Map& values, string& postfix, int numbers
             pcount--;
             }
             
-            while(converter.size() != 0 && converter.top() != '(')
+            while(converter.size() != 0 && converter.top() != openParen)
             {
                 postfix += converter.top();
                 converter.pop();
@@ -121,7 +153,7 @@ int convert_infix(string& infix, const Map& values, string& postfix, int numbers
               {
                   return 1;
               }
-              while(!converter.empty() && converter.top() != '(' && check_precedence(converter.top(),infix[i]))
+              while(!converter.empty() && converter.top() != openParen && applyPrecedence(converter.top(),infix[i]))
               {
                 postfix += converter.top();
                 converter.pop();
@@ -167,38 +199,6 @@ int convert_infix(string& infix, const Map& values, string& postfix, int numbers
     
 }
 
-int addNum (int& varX, int& varY, int& result)
-{
-    result = varY + varX;
-    return result;
-}
-
-int subtractNum (int& varX, int& varY, int& result)
-{
-    result = varY - varX;
-    return result;
-}
-
-int multiplyNum (int& varX, int& varY, int& result)
-{
-    result = varY * varX;
-    return result;
-}
-int divideNum (int& varX, int& varY, int& result)
-{
-    result = varY / varX;
-    return result;
-}
-
-bool divideByZero(int& varX)
-{
-    if(varX == 0)
-    {
-        return true;
-    }
-    return false;
-}
-
 int evaluate(string infix, const Map& values, string& postfix, int& result)
 {
     postfix = "";
@@ -206,7 +206,7 @@ int evaluate(string infix, const Map& values, string& postfix, int& result)
     int correspondingValue;
     stack<int> finStack;
 
-    int finResult = convert_infix(infix, values, postfix, 1, 2, 3, 4);
+    int finResult = infixToPostfixTranslation(infix, values, postfix, 1, 2, 3, 4);
     if(finResult != 0)
     {
         return finResult;
