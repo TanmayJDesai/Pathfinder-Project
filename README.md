@@ -1,7 +1,3 @@
-Winter 2022 CS 32
-Homework 2
-Time due: 11:00 PM Wednesday, February 2
-
 Write a C++ function named pathExists that determines whether or not a there's a path from start to finish in a rectangular maze. Here is the prototype:
 
         bool pathExists(string maze[], int nRows, int nCols, int sr, int sc, int er, int ec);
@@ -169,7 +165,7 @@ Here is the function:
           //   that corresponds to it) attempts to divide by zero, then result
           //   is unchanged and the function returns 3; otherwise, result is
           //   set to the value of the expression and the function returns 0.
-Adapt the algorithms presented on pp. 203-207 of the textbook to convert the infix expression to postfix, then evaluate the postfix form of the expression. The algorithms use stacks. Rather than implementing the stack types yourself, you must use the stack class template from the Standard C++ library. You may not assume that the infix string passed to the function is syntactically valid; you'll have to detect whether it is or not.
+Adapt the algorithms to convert the infix expression to postfix, then evaluate the postfix form of the expression. The algorithms use stacks. Rather than implementing the stack types yourself, you must use the stack class template from the Standard C++ library. You may not assume that the infix string passed to the function is syntactically valid; you'll have to detect whether it is or not.
 
 For this problem, you will turn in a file named eval.cpp whose structure is probably of the form
 
@@ -248,13 +244,3 @@ instead of
 
 	if (islower(ch) == true)  // WRONG!!!!
 since in a comparison involving an int and a bool, the bool will be converted to int; because true converts to 1, and the non-zero int that islower returns for a letter might not be 1, the condition for the if might evaluate to false.
-
-By Tuesday, February 1, there will be a link on the class webpage that will enable you to turn in this homework. Turn in one zip file that contains your solutions to the homework problems. The zip file should contain
-
-mazestack.cpp, if you solved problem 1
-mazequeue.cpp, if you solved problem 3
-eval.cpp, if you solved problem 5
-hw.docx, hw.doc, or hw.txt, if you solved problems 2 and/or 4
-Each source file you turn in may or may not contain a main routine; we'd prefer that it doesn't. If it does, our testing scripts will rename your main routine to something harmless. Our scripts will append our own main routine, then compile and run the resulting source file. Therefore, to get any credit, each source file you turn in must at least compile successfully (even though it's allowed to not link because of a missing main routine).
-
-In each source file you turn in, do not comment out your implementation; you want our test scripts to see it! (Some people do this when testing other files' code because they put all their code in one project instead of having a separate project for each of problems 1, 3, and 5.)
