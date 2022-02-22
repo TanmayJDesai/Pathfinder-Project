@@ -1,4 +1,5 @@
-100/100
+Score: 100/100
+
 Write a C++ function named pathExists that determines whether or not a there's a path from start to finish in a rectangular maze. Here is the prototype:
 
         bool pathExists(string maze[], int nRows, int nCols, int sr, int sc, int er, int ec);
