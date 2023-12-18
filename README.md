@@ -1,4 +1,4 @@
-Score: 100/100
+## PathFinder Project: 
 
 Write a C++ function named pathExists that determines whether or not a there's a path from start to finish in a rectangular maze. Here is the prototype:
 
